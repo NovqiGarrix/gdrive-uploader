@@ -7,12 +7,11 @@ import logger from '../utils/logger';
 import { createWriteStream } from 'fs';
 import { unlink } from 'fs/promises';
 
-export const handleUpload = async (req: Request<Record<never, never>, Record<never, never>, { folderId: string }, { isPublic: boolean }>, res: Response) => {
+export const handleUpload = async (req: Request<Record<never, never>, Record<never, never>, Record<never, never>, { isPublic: boolean; folderId: string }>, res: Response) => {
 
-    let { isPublic } = req.query;
+    let { isPublic, folderId } = req.query;
     isPublic = Boolean(isPublic ?? true);
 
-    const { folderId } = req.body
     if (!folderId) return res.status(400).json({ error: "Invalid Request!" });
 
     const googleapis = new GoogleApis();
