@@ -25,3 +25,22 @@ export const handleGoogleRedirect = async (req: Request, res: Response) => {
     }
 
 }
+
+export const handleUpdateAccessToken = async (_req: Request, res: Response) => {
+
+    const googleapi = new GoogleApis();
+
+    try {
+
+        logger.info(`🤟 Updating Access Token`);
+        await googleapi.updateAccessToken();
+        logger.info(`🥽 Access Token Updated`);
+
+        return res.send({ data: "OK", error: null });
+
+    } catch (error: any) {
+        logger.error(JSON.stringify({ msg: error.message, stack: error.stack }));
+        return res.status(500).send({ error: error.message, data: null });
+    }
+
+}
