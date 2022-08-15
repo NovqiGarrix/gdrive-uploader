@@ -1,0 +1,13 @@
+logs/*
+
+node_modules
+
+build
+
+.env
+
+pnpm-lock.yaml 
+
+yarn.lock
+
+package-lock.json

@@ -1,0 +1,37 @@
+{
+  "name": "googleapi-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsnd --respawn --transpile-only --exit-child src/index.ts",
+    "start": "node build/index.js",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/busboy": "^1.5.0",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/node": "^18.0.5",
+    "@types/node-schedule": "^2.1.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "busboy": "^1.6.0",
+    "cors": "^2.8.5",
+    "dayjs": "^1.11.3",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "google-auth-library": "^8.1.1",
+    "googleapis": "^105.0.0",
+    "ioredis": "^5.2.0",
+    "node-schedule": "^2.1.0",
+    "winston": "^3.8.1",
+    "zod": "^3.17.5"
+  }
+}
