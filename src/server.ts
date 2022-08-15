@@ -1,21 +1,9 @@
 import express from 'express';
-import dotenv from 'dotenv';
 import cors from 'cors';
 
 import requestLogger from './middleware/requestLogger';
 
-import logger from './utils/logger';
 import { MainRouter, UploadRouter } from './routers';
-
-dotenv.config();
-
-const signals = ['SIGINT', 'SIGTERM'];
-for (const signal of signals) {
-    process.on(signal, () => {
-        logger.warn(`Received ${signal}, exiting...`);
-        process.exit(0);
-    })
-}
 
 export default function server() {
     const app = express();

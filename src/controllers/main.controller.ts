@@ -12,9 +12,10 @@ export const handleGoogleRedirect = async (req: Request, res: Response) => {
     try {
 
         const { tokens } = await googleClient.getToken(code as string);
+        logger.info(`[GetToken]: ${JSON.stringify(tokens)}`);
 
         const { access_token, refresh_token } = tokens
-        if (!access_token || !refresh_token) throw new Error("Error to retrieve tokens");
+        if (!access_token || !refresh_token) throw new Error("Access Token, and Refresh Token is undefined");
 
         await GoogleApis.setCredentials(tokens);
         return res.send({ data: "OK", error: null });

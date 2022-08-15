@@ -8,19 +8,11 @@ import server from './server';
 
 dotenv.config();
 
-const signals = ['SIGINT', 'SIGTERM'];
-for (const signal of signals) {
-    process.on(signal, () => {
-        logger.warn(`Received ${signal}, exiting...`);
-        process.exit(0);
-    })
-}
-
 const PORT = process.env.PORT || 3003;
 const BASE_URL = process.env.BASE_URL || 'http://localhost:3003';
 
 const app = server();
-app.listen(PORT, async () => {
+const serve = app.listen(PORT, async () => {
 
     try {
 
@@ -53,3 +45,12 @@ app.listen(PORT, async () => {
     }
 
 });
+
+const signals = ['SIGINT', 'SIGTERM'];
+for (const signal of signals) {
+    process.on(signal, () => {
+        logger.warn(`Received ${signal}, exiting...`);
+        serve.close();
+        process.exit(0);
+    })
+}
