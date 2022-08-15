@@ -34,7 +34,8 @@ const serve = app.listen(PORT, async () => {
         const SCOPE = ["profile", "email", "https://www.googleapis.com/auth/drive"];
         const authURL = googleClient.generateAuthUrl({
             access_type: "offline",
-            scope: SCOPE
+            scope: SCOPE,
+            prompt: "select_account"
         });
 
         logger.info(`📑 [Google Auth URL]: ${authURL}`);
