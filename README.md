@@ -1,9 +1,24 @@
 # GoogleAPI Service
 
-GoogleAPI Service is use to communicate between EmployX Server to GoogleAPI Services. I decided to create a new service for this, because in this Service there will be a job, that run every 50 minutes to update the google access token in Redis.
+## Short Description
+Upload, and delete files to Google Drive programatically using Google Drive API. Has ability to update the access token every single hour, so it does not need refresh token checker.
 
-## Automatically Update Access Token in Redis
+## Techs
+1. Node.js
+2. TypeScript
+3. Busboy (To upload file, and make a stream for the file)
+4. Redis
+5. Winston (Logger)
 
-## Google Drive CRUD
+## Feature
+- Upload files
+- Delete File 
 
-##
+## TODO: CRUD
+For now, CRUD hasn't implemented yet. Soon, I'll add it.
+
+## That's it
+Happy, Coding. 
+```typescript
+const author: string = "NovqiGarrix";
+```
