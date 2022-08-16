@@ -1,7 +1,7 @@
 # GoogleAPI Service
 
 ## Short Description
-Upload, and delete files to Google Drive programatically using Google Drive API. Has ability to update the access token every single hour, so it does not need refresh token checker.
+CRUD files in Google Drive programatically using Google Drive API. Has ability to update the access token every single hour, so it does not need refresh token checker.
 
 ## Techs
 1. Node.js
@@ -11,8 +11,10 @@ Upload, and delete files to Google Drive programatically using Google Drive API.
 5. Winston (Logger)
 
 ## Feature
+- Get File
 - Upload files
 - Delete File 
+- Get Files
 
 ## TODO: CRUD
 For now, CRUD hasn't implemented yet. Soon, I'll add it.
