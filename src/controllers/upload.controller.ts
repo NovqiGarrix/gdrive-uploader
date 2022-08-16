@@ -94,3 +94,22 @@ export const deleteUploadedFile = async (req: Request, res: Response): Promise<R
     }
 
 }
+
+export const getAllFiles = async (req: Request<{}, {}, {}, { folderId: string }>, res: Response): Promise<Response> => {
+
+    const { folderId } = req.query;
+    if (!folderId) return res.status(400).send({ error: "Invalid Request!", data: null });
+
+    try {
+
+        const googleapi = new GoogleApis();
+
+        const files = await googleapi.getDriveFiles(folderId);
+        return res.status(200).send({ data: files, error: null });
+
+    } catch (error: any) {
+        logger.error(`[GetAllFiles]: ${error.message}`);
+        return res.status(500).send(error.message);
+    }
+
+}

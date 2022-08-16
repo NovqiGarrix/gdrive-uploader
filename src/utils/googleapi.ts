@@ -202,4 +202,26 @@ export class GoogleApis {
 
     }
 
+    async getDriveFiles(folderId: string): Promise<drive_v3.Schema$File[]> {
+
+        const drive = GoogleApis.drive;
+
+        try {
+
+            const { data } = await drive.files.list({
+                q: `'${folderId}' in parents`,
+                pageSize: 1000,
+                fields: "files(id, name, mimeType, modifiedTime, createdTime, size, webViewLink, webContentLink)"
+            });
+
+            if (!data.files) throw new Error("No files found or Invalid Folder Id");
+            return data.files;
+
+        } catch (error: any) {
+            logger.error(`[GetDriveFiles]: ${error.message}`);
+            throw new Error(error.message);
+        }
+
+    }
+
 }
